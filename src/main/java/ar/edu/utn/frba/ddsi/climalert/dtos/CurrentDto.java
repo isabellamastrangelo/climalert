@@ -1,7 +1,9 @@
 package ar.edu.utn.frba.ddsi.climalert.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
+@Data
 public class CurrentDto {
   @JsonProperty("temp_c")
   private Double tempC;
