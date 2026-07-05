@@ -12,7 +12,7 @@ public class ClimaScheduler {
 
   @Scheduled(cron = "0 */2 * * * *") // cada 5 min
   public void obtenerDatosClimaticos() {
-    System.out.println("cron task");
+    System.out.println("cron task de climas");
     service.obtenerYGuardar();
   }
 

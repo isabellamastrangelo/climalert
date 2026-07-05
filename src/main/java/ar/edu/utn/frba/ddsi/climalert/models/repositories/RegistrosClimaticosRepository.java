@@ -5,8 +5,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class RegistrosClimaticosRepository {
   private List<RegistroClimatico> registros = new ArrayList<>();
+
+  public RegistroClimatico obtenerUltimo(){
+    return registros.getLast();
+  }
+
 }
