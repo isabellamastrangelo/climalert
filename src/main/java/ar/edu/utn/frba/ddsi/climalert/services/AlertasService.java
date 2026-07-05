@@ -7,12 +7,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.logging.Logger;
 
 @Service
 public class AlertasService {
   private final RegistrosClimaticosRepository repository;
   private final ApplicationEventPublisher eventPublisher;
+  private LocalDateTime fechaUltimaAlerta;
 
   public AlertasService(RegistrosClimaticosRepository repository, ApplicationEventPublisher eventPublisher) {
     this.repository = repository;
@@ -26,10 +28,16 @@ public class AlertasService {
     if (ultimoRegistro != null && esCondicionCritica(ultimoRegistro)) {
       System.out.println("Condición crítica detectada - Temp: " + ultimoRegistro.getTemperatura() + "- Humedad: "+ ultimoRegistro.getHumedad());
 
-      AlertaMeteorologicaEvent evento = new AlertaMeteorologicaEvent(this, ultimoRegistro);
-      eventPublisher.publishEvent(evento);
+      if (fechaUltimaAlerta != null && fechaUltimaAlerta.equals(ultimoRegistro.getFechaRegistroSistema())) {
+        System.out.println("El registro actual ya fue alertado. Ignorando..."); // Para no procesar varias veces el mismo registro
+      }
+      else {
+        fechaUltimaAlerta = ultimoRegistro.getFechaRegistroSistema();
+        AlertaMeteorologicaEvent evento = new AlertaMeteorologicaEvent(this, ultimoRegistro);
+        eventPublisher.publishEvent(evento);
+      }
     } else {
-      System.out.println("Clima estable. No se requieren acciones.");
+      System.out.println("Clima estable.");
     }
 
   }

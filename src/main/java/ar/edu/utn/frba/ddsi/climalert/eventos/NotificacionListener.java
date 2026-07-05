@@ -1,7 +1,6 @@
 package ar.edu.utn.frba.ddsi.climalert.eventos;
 
 import ar.edu.utn.frba.ddsi.climalert.models.entities.RegistroClimatico;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.event.EventListener;
 import org.springframework.mail.SimpleMailMessage;
