@@ -11,6 +11,6 @@ public class RegistroClimatico {
   private Integer humedad;
   private Double sensacionTermica;
 
-  private LocalDateTime fechaLecturaProvider; // La fecha en la que el proveedor midió el clima
-  private LocalDateTime fechaRegistroSistema; // Fecha y hora de cuándo tu sistema guardó el registro
+  private LocalDateTime fechaLecturaProvider; // La fecha en la que se midio el clima
+  private LocalDateTime fechaRegistroSistema; // Fecha de cuándo se guardo el registro
 }

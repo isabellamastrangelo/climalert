@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class ClimaScheduler {
   private final WeatherApiService service;
 
-  @Scheduled(cron = "0 */3 * * * *") // cada 5 min
+  @Scheduled(cron = "0 */5 * * * *") // cada 5 min
   public void obtenerDatosClimaticos() {
     System.out.println("cron task de climas");
     service.obtenerYGuardar();

@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 public class NotificacionListener {
-  private final List<String> destinatarios = List.of("imastrangelo@frba.utn.edu.ar", "isabellamastrangelo05@gmail.com");//{"admin@clima.com", "emergencias@clima.com", "meteorologia@clima.com"};
+  private final List<String> destinatarios = List.of("admin@clima.com", "emergencias@clima.com", "meteorologia@clima.com");
   private final JavaMailSender mailSender;
   private String ubicacion;
 

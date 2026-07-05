@@ -35,7 +35,6 @@ public class RegistroClimaticoMapper {
       }
     }
 
-    // El timestamp de nuestro sistema se genera al momento de la conversión
     registro.setFechaRegistroSistema(LocalDateTime.now());
 
     return registro;

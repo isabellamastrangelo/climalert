@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class AlertaScheduler {
   private final AlertasService service;
 
-  @Scheduled(cron = "0 */1 * * * *") // cada 5 min
+  @Scheduled(cron = "0 */1 * * * *") // cada 1 min
   public void buscarAlertaClimatica() {
     System.out.println("cron task de alertas");
     service.evaluarCondicionesCriticas();

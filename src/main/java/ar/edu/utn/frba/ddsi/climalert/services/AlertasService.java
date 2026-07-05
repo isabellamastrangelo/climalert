@@ -3,12 +3,10 @@ package ar.edu.utn.frba.ddsi.climalert.services;
 import ar.edu.utn.frba.ddsi.climalert.eventos.AlertaMeteorologicaEvent;
 import ar.edu.utn.frba.ddsi.climalert.models.entities.RegistroClimatico;
 import ar.edu.utn.frba.ddsi.climalert.models.repositories.RegistrosClimaticosRepository;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.logging.Logger;
 
 @Service
 public class AlertasService {
@@ -23,7 +21,6 @@ public class AlertasService {
 
   public void evaluarCondicionesCriticas() {
     System.out.println("Iniciando evaluación de alertas meteorológicas...");
-
     RegistroClimatico ultimoRegistro = repository.obtenerUltimo();
     if (ultimoRegistro != null && esCondicionCritica(ultimoRegistro)) {
       System.out.println("Condición crítica detectada - Temp: " + ultimoRegistro.getTemperatura() + "- Humedad: "+ ultimoRegistro.getHumedad());
@@ -37,12 +34,12 @@ public class AlertasService {
         eventPublisher.publishEvent(evento);
       }
     } else {
-      System.out.println("Clima estable.");
+      System.out.println("Clima estable (o no hay datos que analizar)");
     }
 
   }
 
   private boolean esCondicionCritica(RegistroClimatico registro) {
-    return registro.getTemperatura() > 5/*35.0*/ && registro.getHumedad() > 60;
+    return registro.getTemperatura() > 35.0 && registro.getHumedad() > 60;
   }
 }

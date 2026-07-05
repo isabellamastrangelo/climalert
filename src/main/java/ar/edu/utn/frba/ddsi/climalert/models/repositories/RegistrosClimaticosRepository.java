@@ -20,4 +20,7 @@ public class RegistrosClimaticosRepository {
     registros.add(registroNuevo);
   }
 
+  public List<RegistroClimatico> obtenerTodos(){
+    return registros;
+  }
 }
