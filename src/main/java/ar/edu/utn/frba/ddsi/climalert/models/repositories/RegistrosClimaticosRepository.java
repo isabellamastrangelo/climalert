@@ -12,7 +12,12 @@ public class RegistrosClimaticosRepository {
   private List<RegistroClimatico> registros = new ArrayList<>();
 
   public RegistroClimatico obtenerUltimo(){
+    if(registros.isEmpty()) return null;
     return registros.getLast();
+  }
+
+  public void guardar(RegistroClimatico registroNuevo){
+    registros.add(registroNuevo);
   }
 
 }

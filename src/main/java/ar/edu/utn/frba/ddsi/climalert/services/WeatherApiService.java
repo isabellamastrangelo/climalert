@@ -18,6 +18,6 @@ public class WeatherApiService {
     WeatherApiResponseDTO dto = weatherApiClient.obtener();
     RegistroClimatico entidad = climaMapper.toEntity(dto);
     System.out.println(entidad);
-    //climaRepository.save(entidad);
+    climaRepository.guardar(entidad);
   }
 }
